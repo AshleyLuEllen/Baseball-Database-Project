@@ -1,0 +1,152 @@
+<div>
+    <style>
+            h1 {text-align: center;}
+            h2 {text-align: center;}
+            h3 {text-align: center;}
+            form {text-align: center;}
+            table {text-align: center;}
+            .headerNone {
+                margin-bottom: 0;
+                margin-top: 0;
+            }
+            .headerNoB {
+                margin-bottom: 0;
+            }
+            table, th, td {
+                border: 1px solid black;
+            }
+            table {
+                margin-top: 0;
+                margin-left: auto;
+                margin-right: auto;
+            }
+    </style>
+
+    {% if teamName %}
+        <h1>{{teamName}} – {{yearID}}</h1>
+
+        {% if rank %}
+            <h2>{{rank}}</h2>
+        {% endif %}
+
+        {% if finals %}
+
+            {% for final in finals %}
+            <h2 class="headerNone">{{final}}</h2>
+            {% endfor %}
+
+        {% endif %}
+
+        {% if standings %}
+        <h2 class="headerNoB">Post Season Games</h2>
+        <table>
+            <tr>
+                <th>Win/Lose</th>
+                <th>Game</th>
+                <th>Other Team</th>
+                <th>wins</th>
+                <th>losses</th>
+                <th>ties</th>
+            </tr>
+            {% for standing in standings %}
+                {% if standing.w_l %}
+                    <tr>
+                        <td>{{ standing.w_l }}</td>
+                        <td>{{ standing.round }}</td>
+                        <td>{{ standing.other }}</td>
+                        <td>{{ standing.wins }}</td>
+                        <td>{{ standing.losses }}</td>
+                        <td>{{ standing.ties }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+
+        {% endif %}
+
+        {% if managers %}
+        <h2 class="headerNoB">Managers</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+            </tr>
+            {% for manager in managers %}
+            <tr>
+                <td>{{ manager.name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+        {% if players %}
+        <h2 class="headerNoB">Team Roster</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Birth Day</th>
+                <th>Birth Place</th>
+                <th>Batting Hand</th>
+                <th>Throwing Hand</th>
+            </tr>
+            {% for player in players %}
+            <tr>
+                <td>{{ player.name }}</td>
+                <td>{{ player.birth_day }}</td>
+                <td>{{ player.birth_place }}</td>
+                <td>{{ player.batting_hand }}</td>
+                <td>{{ player.throwing_hand }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+    {% if batting %}
+    <h2 class="headerNoB">Batting Stats</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Plate Appearances</th>
+                <th>Batting Average</th>
+                <th>Onbase Percentage</th>
+                <th>Slugging Percentage</th>
+                <th>Positions Played</th>
+            </tr>
+            {% for batter in batting %}
+            <tr>
+                <td>{{ batter.name }}</td>
+                <td>{{ batter.plate_appearances }}</td>
+                <td>{{ batter.batting_average }}</td>
+                <td>{{ batter.onbase_percentage }}</td>
+                <td>{{ batter.slugging_percentage }}</td>
+                <td>{{ batter.positions_played }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+
+    {% if pitching %}
+    <h2 class="headerNoB">Pitching Stats</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Innings Pitched</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Saves</th>
+                <th>Earned Run Average</th>
+            </tr>
+            {% for pitcher in pitching %}
+            <tr>
+                <td>{{ pitcher.name }}</td>
+                <td>{{ pitcher.innings_pitched }}</td>
+                <td>{{ pitcher.wins }}</td>
+                <td>{{ pitcher.losses }}</td>
+                <td>{{ pitcher.saves }}</td>
+                <td>{{ pitcher.ERA }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    {% endif %}
+</div>

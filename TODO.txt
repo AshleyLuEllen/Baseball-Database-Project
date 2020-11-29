@@ -1,0 +1,23 @@
+All projects must:
+start with the Lahman database provided at the start of class
+use the most recent MySQL version of the database
+create a user table. The table must contain a unique user name, a password field and favorite team fields. Other fields may be added as desired.
+provide all database modifications in a file called modifications.sql
+create a web interface using Flask that displays information about a specific team and a specific year. The information should contain the following:
+• team name and year
+• finish during the year - this includes the position in the league standings along with all playoff results (e.g., finished second in AL West, 2nd wild card team, won wild cared play in game, lost first round of playoffs). Note!This can get complicated. I'm leaving it up to you as how you want to present the information.
+• list of players on the team and information about them (birth day, birth place, batting and throwing hand)
+• list of batters with statistics (plate appearances, batting average, onbase percentage and slugging percentage, list of positions played)
+• list of pitchers with statistics (innings pitched, wins, losses, saves, era)
+• list of managers (can be several; often one)
+add users to the system. This requires a registration and a login.
+Allow registered users to select a favorite team and (optionally) year. When a user successfully logs in to the system, the users favorite team and year will be displayed. If the user does not select a year, the most recent year for that team is used. Note that the team does not have to be a currently existing team. When selecting a year, limit the options to those years the team actually existed.
+allow users to change their favorite team and year
+connections to MariaDB must use SQLAlchemy (the variant supported by flask)
+configuration information is excuted in a .flaskenv file
+configuration for your project should be submitted in a file called flaskenv
+
+
+NOTES:
+source venv/bin/activate
+flask run
